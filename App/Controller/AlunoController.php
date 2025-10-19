@@ -2,15 +2,28 @@
 
 namespace App\Controller;
 
-class AlunoController 
+use App\Model\Aluno;
+
+final class AlunoController 
 {
-    public static function cadastro()
+    public static function cadastro(): void
     {
-        echo "vou mostrar o formulario de cadastro";
+        $model = new Aluno();
+        // $model->id = 8;
+        $model->nome = "Lucio Azevedo";
+        $model->ra = 124;
+        $model->curso = "Desenvolvimento de sistema";
+        $model->save();
+
+        echo "Aluno inserido com sucesso";
     }   
     
-    public static function listar()
+    public static function listar(): void
     {
         echo "listagem de alunos";
+        $aluno = new Aluno();
+        $lista = $aluno->getAllRows();
+
+        var_dump($lista);
     }
-}
+}   
